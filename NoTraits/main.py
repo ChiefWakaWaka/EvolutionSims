@@ -14,7 +14,7 @@ round = 0
 for i in range (5):
     bots.append(Character(0 ,0.1, 0.01, random.randint(0, 100), random.randint(0, 100)))
 
-for i in range(100):
+for i in range(300):
     round += 1
     averageDup = 0
     averageDeath = 0
@@ -34,12 +34,13 @@ for i in range(100):
     plt.draw()
 
     print(len(bots), averageDup, averageDeath)
+    #print(averageDup - averageDeath)
 
     for obj in bots:
         dupChance = random.uniform(0,1) < obj.duplicate
         deathChance = random.uniform(0,1) < obj.death
         if(dupChance == True):
-            bots.append(Character(obj.generation + 1, obj.duplicate + random.uniform(-0.02, 0.02), obj.death + random.uniform(-0.02, 0.02), obj.xPos, obj.yPos))
+            bots.append(Character(obj.generation + 1, obj.duplicate + random.uniform(-0.02, 0.02), 0.01, obj.xPos, obj.yPos))
         if(deathChance == True):
             bots.remove(obj)
         obj.death += 0.001
