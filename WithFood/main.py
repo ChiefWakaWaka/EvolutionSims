@@ -16,7 +16,7 @@ while True:
     # NOTE: reset food each round
     for obj in bots:
         obj.food = 0
-        foodCnt = 500
+        foodCnt = 5000
 
     # NOTE: collect food
     speeds = []
@@ -58,13 +58,13 @@ while True:
     # NOTE: create dynamic chart for population
     xAxis.append(round)
     yAxis.append(len(bots))
-    plt.axis([round - 200, max(xAxis), min(yAxis) - min(yAxis)*0.1, max(yAxis) + max(yAxis)*0.1])
+    plt.axis([round - 100, max(xAxis), min(yAxis) - min(yAxis)*0.1, max(yAxis) + max(yAxis)*0.1])
     plt.plot(xAxis, yAxis, color="blue")
     plt.pause(0.005)
     plt.draw()
     round += 1
 
-    if(len(yAxis) > 210):
+    if(len(yAxis) > 100):
         yAxis.pop(0)
         xAxis.pop(0)
 

@@ -14,7 +14,7 @@ round = 0
 for i in range (5):
     bots.append(Character(0 ,0.1, 0.01, random.randint(0, 100), random.randint(0, 100)))
 
-for i in range(300):
+while True:
     round += 1
     averageDup = 0
     averageDeath = 0
@@ -28,10 +28,15 @@ for i in range(300):
 
     xAxis.append(round)
     yAxis.append(len(bots))
-    plt.axis([1, max(xAxis), 0, max(yAxis) * 1.5])
+    plt.axis([round - 200, max(xAxis), min(yAxis) - min(yAxis)*0.1, max(yAxis) + max(yAxis)*0.1])
     plt.plot(xAxis, yAxis, color="blue")
     plt.pause(0.005)
     plt.draw()
+    round += 1
+
+    if(len(xAxis) > 200):
+        yAxis.pop(0)
+        xAxis.pop(0)
 
     print(len(bots), averageDup, averageDeath)
     #print(averageDup - averageDeath)
