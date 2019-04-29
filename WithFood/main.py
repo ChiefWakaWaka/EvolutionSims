@@ -9,7 +9,7 @@ yAxis = []
 round = 0
 
 
-for i in range(10):
+for i in range(50):
     bots.append(Creature(1, 1, 0))
 
 while True:
@@ -63,9 +63,7 @@ while True:
     plt.pause(0.005)
     plt.draw()
     round += 1
-
     if(len(yAxis) > 100):
         yAxis.pop(0)
         xAxis.pop(0)
-
 plt.show()
