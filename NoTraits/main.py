@@ -2,7 +2,6 @@ from Character import Character
 import random
 import time
 import math
-
 import matplotlib.pyplot as plt
 
 bots = []
@@ -24,18 +23,12 @@ for i in range(100):
     for i in range (len(bots)):
         averageDup += bots[i].duplicate
         averageDeath += bots[i].death
-        averageGen += bots[i].generation
     averageDup /= len(bots)
     averageDeath /= len(bots)
-    averageGen /= len(bots)
 
     xAxis.append(round)
     yAxis.append(len(bots))
-    dupList.append(averageGen)
-    deathList.append(averageDeath)
     plt.axis([1, max(xAxis), 0, max(yAxis) * 1.5])
-    #plt.plot(xAxis, deathList, color="blue")
-    #plt.plot(xAxis, dupList, color="orange")
     plt.plot(xAxis, yAxis, color="blue")
     plt.pause(0.005)
     plt.draw()
