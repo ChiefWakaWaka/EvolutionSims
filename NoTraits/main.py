@@ -26,18 +26,6 @@ while True:
     averageDup /= len(bots)
     averageDeath /= len(bots)
 
-    xAxis.append(round)
-    yAxis.append(len(bots))
-    plt.axis([round - 200, max(xAxis), min(yAxis) - min(yAxis)*0.1, max(yAxis) + max(yAxis)*0.1])
-    plt.plot(xAxis, yAxis, color="blue")
-    plt.pause(0.005)
-    plt.draw()
-    round += 1
-
-    if(len(xAxis) > 200):
-        yAxis.pop(0)
-        xAxis.pop(0)
-
     print(len(bots), averageDup, averageDeath)
     #print(averageDup - averageDeath)
 
@@ -50,5 +38,17 @@ while True:
             bots.remove(obj)
         obj.death += 0.001
         obj.duplicate = 2 / (len(bots) + 1)
+
+    xAxis.append(round)
+    yAxis.append(len(bots))
+    plt.axis([min(xAxis), max(xAxis), min(yAxis) - min(yAxis)*0.1, max(yAxis) + max(yAxis)*0.1])
+    plt.plot(xAxis, yAxis, color="blue")
+    plt.pause(0.005)
+    plt.draw()
+    round += 1
+
+    if(len(xAxis) > 200):
+        yAxis.pop(0)
+        xAxis.pop(0)
 
 plt.show()
