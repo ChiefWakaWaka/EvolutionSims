@@ -9,14 +9,16 @@ yAxis = []
 round = 0
 
 
-for i in range(50):
+for i in range(100):
     bots.append(Creature(1, 1, 0))
+
+foodCnt = 1000
 
 while True:
     # NOTE: reset food each round
     for obj in bots:
         obj.food = 0
-        foodCnt = 5000
+        obj.energy = 0
 
     # NOTE: collect food
     speeds = []
@@ -45,7 +47,7 @@ while True:
         elif(obj.energy >= 1):
             if(random.uniform(0, 1) < 0.01):
                 bots.append(Creature(1, obj.energy + random.uniform(-0.01, 0.01), 0))
-        elif(obj.energy < 1):
+        elif(obj.energy < 0.5):
             bots.remove(obj)
 
     # NOTE: find and print average speed
@@ -53,7 +55,7 @@ while True:
     for obj in bots:
         averageSpeed.append(obj.speed)
     averageSpeed = (sum(averageSpeed) / len(averageSpeed))
-    print(averageSpeed)
+    print(foodCnt)
 
     # NOTE: create dynamic chart for population
     xAxis.append(round)
@@ -66,4 +68,7 @@ while True:
     if(len(yAxis) > 100):
         yAxis.pop(0)
         xAxis.pop(0)
+
+    #foodCnt = foodCnt - 10
+
 plt.show()
